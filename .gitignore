@@ -1,1 +1,9 @@
+.idea/
+node_modules/
+
+state.*.json
+uniqueEmails.*.json
+.env*
+!.env.example
+
 build/
