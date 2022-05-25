@@ -6,8 +6,14 @@ Version can be changed easily in script.
 
 ## 1. Move one or multiple databases from one mysql server to another
 
-1. First fill the env vars for source and destination databases `source-mysql.env` and `dest-mysql.env`
-2. Have fun, run 
+1. First you need to fill the env vars for source and destination databases
+   Start by copying the given example env vars
+   ```bash
+   cp source-mysql.env.example source-mysql.env
+   cp dest-mysql.env.example dest-mysql.env
+   ```
+   Then fill with proper values  `source-mysql.env` and `dest-mysql.env`
+2. Have fun, run
 ```bash
 bash start-transfer.sh
 ```

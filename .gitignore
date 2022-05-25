@@ -7,3 +7,6 @@ uniqueEmails.*.json
 !.env.example
 
 build/
+
+source-mysql.env
+dest-mysql.env

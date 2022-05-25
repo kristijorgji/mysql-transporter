@@ -21,6 +21,7 @@ source_host=$SOURCE_HOST;
 source_username=$SOURCE_USERNAME;
 source_password=$SOURCE_PASSWORD;
 source_database=$SOURCE_DATABASE;
+source_port="${SOURCE_PORT:-3306}";
 
 filename=$FILENAME;
 EOF
@@ -36,7 +37,7 @@ dir="/data/";
 mkdir -p "$dir";
 
 log "Starting to dump database $source_database into $filename";
-mysqldump -h ${source_host} -u ${source_username} -p${source_password} \
+mysqldump -h ${source_host} -P ${source_port} -u ${source_username} -p${source_password} \
   --lock-tables=false \
   --set-gtid-purged=OFF \
   --triggers \
@@ -50,6 +51,7 @@ EOF
 exportCmd="$envPart$exportCmd";
 
 echo "$exportCmd" | docker run -i --rm --entrypoint '' \
+  --platform linux/x86_64 \
   -v "$backupPath":/data \
   mysql:8.0.23 \
   /bin/bash
