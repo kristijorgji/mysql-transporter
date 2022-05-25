@@ -23,6 +23,7 @@ dest_host=$DEST_HOST;
 dest_username=$DEST_USERNAME;
 dest_password=$DEST_PASSWORD;
 dest_database=$DEST_DATABASE;
+dest_port="${DEST_PORT:-3306}";
 
 filename=$FILENAME;
 
@@ -36,13 +37,14 @@ function log() {
 }
 
 log "Importing $filename into dest db"
-mysql -h ${dest_host} -u ${dest_username} -p${dest_password} ${dest_database} < "$filename"
+mysql -h ${dest_host} -P ${dest_port} -u ${dest_username} -p${dest_password} ${dest_database} < "$filename"
 log "Finished import";
 EOF
 
 importCmd="$envPart$importCmd";
 
 echo "$importCmd" | docker run -i --rm --entrypoint '' \
+  --platform linux/x86_64 \
   -v "$backupPath":/data \
   mysql:8.0.23 \
   /bin/bash
