@@ -53,5 +53,5 @@ exportCmd="$envPart$exportCmd";
 echo "$exportCmd" | docker run -i --rm --entrypoint '' \
   --platform linux/x86_64 \
   -v "$backupPath":/data \
-  mysql:8.0.23 \
+  mysql:8.0.33 \
   /bin/bash

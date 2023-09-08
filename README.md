@@ -1,6 +1,6 @@
 # mysql-transporter
 
-Simple scripts to export one or multiple databases from one `mysql database` to another, verison `8.0.23`
+Simple scripts to export one or multiple databases from one `mysql database` to another, version `8.0.33`
 
 Version can be changed easily in script.
 
